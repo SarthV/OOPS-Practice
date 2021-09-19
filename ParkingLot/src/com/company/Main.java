@@ -18,6 +18,7 @@ public class Main {
 
         // NEW "TEST" CODE STARTS HERE
         Admin admin = new Admin();
+        ParkingComplex complex = admin.createNewParkingComplex("My Parking");
         ParkingFloor firstFloor =  admin.addParkingFloor();
         firstFloor.setFloorName("First");
         Car car1 = new Car();
@@ -25,12 +26,13 @@ public class Main {
         ParkingSpot spot = admin.createParkingSpot(1);
         firstFloor.addParkingSpot(spot);
         System.out.println(firstFloor.getNumberOfFreeSpots());
-        firstFloor.assignVehicleToSpace(spot, car1);
-        System.out.println(firstFloor.getNumberOfFreeSpots());
-        firstFloor.removeVehicleFromSpot(spot);
+        firstFloor.assignVehicleToSpace(spot, car1, "10:00");
+        System.out.println(car1.getTicket().getTicketStatus());
+        firstFloor.removeVehicleFromSpot(spot, "15:00");
+        System.out.println(car1.getTicket().getOutTime());
         System.out.println(firstFloor.getNumberOfFreeSpots());
         System.out.println(spot.getVehicle());
-        firstFloor.assignVehicleToSpace(spot, car1);
+        firstFloor.assignVehicleToSpace(spot, car1, "12:30");
         System.out.println(spot.getVehicle().getModel());
 
     }

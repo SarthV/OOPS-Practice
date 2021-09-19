@@ -28,15 +28,21 @@ public class ParkingFloor {
         numberOfFreeSpots++;
     }
 
-    public void assignVehicleToSpace(ParkingSpot spot, Vehicle vehicle) throws IllegalAccessError{
+    public void assignVehicleToSpace(ParkingSpot spot, Vehicle vehicle, String inTime) throws IllegalAccessError{
         if(numberOfFreeSpots <= 0){
             throw new IllegalAccessError("No free spots here!");
         }
+        ParkingTicket ticket = new ParkingTicket();
+        ticket.setInTime(inTime);
+        vehicle.assignTicket(ticket);
         spot.setVehicle(vehicle);
         numberOfFreeSpots--;
     }
 
-    public void removeVehicleFromSpot(ParkingSpot spot){
+    public void removeVehicleFromSpot(ParkingSpot spot, String outTime){
+        Vehicle vehicle = spot.getVehicle();
+        ParkingTicket ticket = vehicle.getTicket();
+        ticket.setOutTime(outTime);
         spot.removeVehicle();
         numberOfFreeSpots++;
     }

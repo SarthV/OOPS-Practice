@@ -26,6 +26,10 @@ public abstract class Vehicle {
         this.ticket = ticket;
     }
 
+    public ParkingTicket getTicket(){
+        return ticket;
+    }
+
     public Vehicle(){
         model = "N/A";
         vehicleType = Type.EMPTY;
