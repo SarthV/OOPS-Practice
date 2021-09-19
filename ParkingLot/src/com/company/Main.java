@@ -19,12 +19,10 @@ public class Main {
         // NEW "TEST" CODE STARTS HERE
         Admin admin = new Admin();
         ParkingComplex complex = admin.createNewParkingComplex("My Parking");
-        ParkingFloor firstFloor =  admin.addParkingFloor();
-        firstFloor.setFloorName("First");
+        ParkingFloor firstFloor =  admin.addParkingFloor("First", complex);
         Car car1 = new Car();
         car1.setModel("BMW");
-        ParkingSpot spot = admin.createParkingSpot(1);
-        firstFloor.addParkingSpot(spot);
+        ParkingSpot spot = admin.createParkingSpot(firstFloor,1);
         System.out.println(firstFloor.getNumberOfFreeSpots());
         firstFloor.assignVehicleToSpace(spot, car1, "10:00");
         System.out.println(car1.getTicket().getTicketStatus());

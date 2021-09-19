@@ -5,13 +5,16 @@ import com.company.ParkingFloor;
 import com.company.ParkingSpot;
 
 public class Admin extends Account {
-    public ParkingFloor addParkingFloor(){
-        ParkingFloor parkingFloor = new ParkingFloor();
+    public ParkingFloor addParkingFloor(String floorName, ParkingComplex complex){
+        complex.addParkingFloor(floorName);
+        ParkingFloor parkingFloor = complex.getParkingFloor(floorName);
         return parkingFloor;
     }
 
-    public ParkingSpot createParkingSpot(int num){
+    public ParkingSpot createParkingSpot(ParkingFloor floor, int num){
         ParkingSpot spot = new ParkingSpot(num);
+        spot.setNum(num);
+        floor.addParkingSpot(spot);
         return spot;
     }
 
