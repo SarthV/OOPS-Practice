@@ -15,11 +15,24 @@ public class Kiosk {
 
     }
 
-    public MovieTicket createTicket(CinemaSeat seat, CinemaHall hall){
+    public CinemaSeat chooseSeat(char row, int col){
+        CinemaSeat seat = new CinemaSeat();
+        seat.setColumn(col);
+        seat.setRow(row);
+        return seat;
+    }
+
+    public MovieTicket checkAndCreateTicket(CinemaSeat seat, CinemaHall hall) throws IllegalArgumentException{
+        int col = seat.getColumn();
+        char row = seat.getRow();
+        if(!hall.getLayout()[row-'A'][col].getEmpty()){
+            throw new IllegalArgumentException("Already occupied seat");
+        }
+        seat.setEmpty(false);
         MovieTicket ticket = new MovieTicket();
         ticket.setHall(hall);
         ticket.setSeat(seat);
-        seat.setEmpty(false);
+        hall.getLayout()[row-'A'][col] = seat;
         return ticket;
     }
 

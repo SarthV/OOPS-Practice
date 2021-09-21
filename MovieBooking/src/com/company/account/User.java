@@ -31,11 +31,4 @@ public class User {
         this.ticket = new MovieTicket();
         this.name = name;
     }
-
-    public CinemaSeat chooseSeat(String row, int col){
-        CinemaSeat seat = new CinemaSeat();
-        seat.setColumn(col);
-        seat.setRow(row);
-        return seat;
-    }
 }

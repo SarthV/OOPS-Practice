@@ -1,9 +1,9 @@
 package com.company;
 
 public class CinemaSeat {
-    String row;
+    char row;
     Integer column;
-    Boolean isEmpty = true;
+    Boolean isEmpty;
 
     public Boolean getEmpty() {
         return isEmpty;
@@ -13,11 +13,11 @@ public class CinemaSeat {
         isEmpty = empty;
     }
 
-    public String getRow() {
+    public char getRow() {
         return row;
     }
 
-    public void setRow(String row) {
+    public void setRow(char row) {
         this.row = row;
     }
 
@@ -30,7 +30,8 @@ public class CinemaSeat {
     }
 
     public CinemaSeat(){
-        this.row = "-1";
+        this.isEmpty = true;
+        this.row = '0';
         this.column = -1;
     }
 }

@@ -7,6 +7,11 @@ public class CinemaHall {
     int columns;
     CinemaSeat[][] layout;
 
+    public CinemaSeat[][] getLayout() {
+        return layout;
+    }
+
+
     public Integer getId() {
         return id;
     }
@@ -20,7 +25,7 @@ public class CinemaHall {
             for(int j = 0 ;  j < columns; j++){
                 this.layout[i][j] = new CinemaSeat();
                 char temp = (char) ('A' + i);
-                this.layout[i][j].setRow(Character.toString(temp));
+                this.layout[i][j].setRow(temp);
                 this.layout[i][j].setColumn(j);
             }
         }
