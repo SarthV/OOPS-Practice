@@ -5,9 +5,13 @@ import java.util.HashMap;
 public class MovieComplex {
     String name;
     HashMap<Integer,CinemaHall> cinemaHalls = new HashMap<>();
+    HashMap<Movie, CinemaHall> movieAndCinemaMap = new HashMap<>();
+
+    public HashMap<Movie, CinemaHall> getMovieAndCinemaMap() {
+        return movieAndCinemaMap;
+    }
 
     public MovieComplex(){
-
     }
 
     public MovieComplex(String name){
@@ -20,4 +24,9 @@ public class MovieComplex {
         }
         cinemaHalls.put(hall.getId(), hall);
     }
+
+    public void addMovieToHall(Movie movie, CinemaHall hall){
+        movieAndCinemaMap.put(movie, hall);
+    }
+
 }

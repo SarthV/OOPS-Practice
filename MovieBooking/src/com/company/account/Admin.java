@@ -1,6 +1,7 @@
 package com.company.account;
 
 import com.company.CinemaHall;
+import com.company.Movie;
 import com.company.MovieComplex;
 
 public class Admin {
@@ -11,6 +12,14 @@ public class Admin {
 
     public Admin(){
 
+    }
+
+    public Movie createMovie(String name, String genre){
+        return new Movie(name, genre);
+    }
+
+    public void addMovieToHall(MovieComplex complex, Movie movie, CinemaHall hall){
+        complex.addMovieToHall(movie,hall);
     }
 
     public MovieComplex createMovieComplex(String name){

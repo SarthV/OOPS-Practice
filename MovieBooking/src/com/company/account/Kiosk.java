@@ -1,9 +1,6 @@
 package com.company.account;
 
-import com.company.CinemaHall;
-import com.company.CinemaSeat;
-import com.company.MovieTicket;
-import com.company.TicketStatus;
+import com.company.*;
 
 public class Kiosk {
     String name;
@@ -39,5 +36,14 @@ public class Kiosk {
     public void assignTicket(MovieTicket ticket, User user){
         ticket.setStatus(TicketStatus.ACTIVE);
         user.setTicket(ticket);
+    }
+
+    public CinemaHall searchMovieToGetHall(Movie movie, MovieComplex complex) throws IllegalArgumentException{
+        if(complex.getMovieAndCinemaMap().containsKey(movie)){
+            return complex.getMovieAndCinemaMap().get(movie);
+        }
+        else{
+            throw new IllegalArgumentException("no such movie here!");
+        }
     }
 }
