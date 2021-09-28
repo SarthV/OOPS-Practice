@@ -7,16 +7,6 @@ public class Tweet {
     Integer id;
     Date date;
     private Tweet next;
-    private Tweet prev;
-
-    public Tweet getPrev() {
-        return prev;
-    }
-
-    public void setPrev(Tweet prev) {
-        this.prev = prev;
-    }
-
 
     public Tweet getNext() {
         return next;
@@ -25,7 +15,6 @@ public class Tweet {
     public void setNext(Tweet next) {
         this.next = next;
     }
-
 
     public Tweet(){
 
@@ -36,7 +25,6 @@ public class Tweet {
         this.id = id;
         this.date = new Date();
         this.next = null;
-        this.prev = null;
     }
 
     public Date getDate() {
