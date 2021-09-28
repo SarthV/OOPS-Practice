@@ -80,16 +80,17 @@ public class User {
         return null;
     }
 
+    //Comparator.comparing(Pair::getKey)
+
     public List<Tweet> getFeed(int maxTweetsOnPage){
         System.out.println("Here is " + this.name + "'s feed!");
-        PriorityQueue<Pair<Date, Tweet>> pq = new PriorityQueue<>(maxTweetsOnPage* following.size(), Comparator.comparing(Pair::getKey));
+        PriorityQueue<Pair<Date, Tweet>> pq = new PriorityQueue<>(maxTweetsOnPage* following.size(), Collections.reverseOrder(Comparator.comparing(Pair::getKey)));
         int count = 0;
         for(User followee : following.values()){
             Tweet temp = followee.head.getNext();
             count  = 0;
             while(count < maxTweetsOnPage && temp != null){
                 Pair<Date, Tweet> p = new Pair<Date, Tweet>(temp.getDate(), temp);
-                System.out.println(p.getValue().getBody() + " --- posted at " + p.getValue().date);
                 pq.add(p);
                 temp = temp.getNext();
                 count++;
@@ -102,6 +103,7 @@ public class User {
         while(!pq.isEmpty() && count < maxTweetsOnPage){
             Tweet tweet = pq.poll().getValue();
             result.add(tweet);
+            System.out.println(tweet.getBody() + " --- posted at " + tweet.date);
             count++;
         }
         return result;

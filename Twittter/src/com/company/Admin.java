@@ -9,10 +9,6 @@ public class Admin {
         return allUsers;
     }
 
-    public void setAllUsers(HashMap<Integer, User> allUsers) {
-        this.allUsers = allUsers;
-    }
-
     public Admin(){
 
     }
